@@ -1,8 +1,9 @@
-# scripts/before_install.sh
 #!/bin/bash
-# Update package list and install Apache on Ubuntu
-apt update
-apt install -y apache2
 
-# Remove existing website files
-rm -rf /var/www/html/*
+# Update package index
+echo "Updating package index"
+sudo apt-get update -y
+
+# Install any necessary dependencies (e.g., if you're using a backend server or other services)
+echo "Installing necessary packages"
+sudo apt-get install -y curl git
