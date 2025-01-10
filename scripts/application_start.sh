@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Start apache2 service
-echo "Starting apache2 service"
-sudo systemctl start apache2.service
+# Start the httpd service (Amazon Linux 2 uses httpd, not apache2)
+echo "Starting httpd service..."
+sudo systemctl start httpd.service
 
-# Enable apache2 service to start on boot
-echo "Enabling apache2 service to start on boot"
-sudo systemctl enable apache2.service
+# Enable httpd to start on boot
+echo "Enabling httpd service to start on boot..."
+sudo systemctl enable httpd.service
 
-# Check if apache2 is running
-if systemctl is-active --quiet apache2.service; then
-    echo "Apache started successfully"
+# Check if httpd is running
+if systemctl is-active --quiet httpd.service; then
+    echo "Apache (httpd) started successfully"
 else
-    echo "Failed to start Apache"
+    echo "Failed to start Apache (httpd)"
     exit 1  # Exit with an error code if Apache failed to start
 fi

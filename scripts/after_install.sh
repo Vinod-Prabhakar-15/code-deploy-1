@@ -1,12 +1,17 @@
 #!/bin/bash
 
-# Set appropriate permissions for the website files
-echo "Setting permissions for website files"
-sudo chown -R www-data:www-data /var/www/html
+# Set appropriate permissions for the web files
+echo "Setting permissions for the web files..."
+sudo chown -R apache:apache /var/www/html
 
-# Ensure Apache (apache2) service is installed (Ubuntu)
-if ! command -v apache2 &> /dev/null
-then
-    echo "apache2 not found, installing Apache..."
-    sudo apt-get install -y apache2
+# Optionally, you might want to restart the httpd service to pick up new changes (files, configuration, etc.)
+echo "Restarting Apache service to apply changes..."
+sudo systemctl restart httpd.service
+
+# Check if httpd is running
+if systemctl is-active --quiet httpd.service; then
+    echo "Apache (httpd) is running successfully"
+else
+    echo "Apache (httpd) is not running"
+    exit 1  # Exit with error code if Apache is not running
 fi

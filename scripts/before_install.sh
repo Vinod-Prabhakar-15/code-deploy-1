@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Update package index
+# Update the package index
 echo "Updating package index"
-sudo apt-get update -y
+sudo yum update -y
 
-# Install any necessary dependencies (e.g., if you're using a backend server or other services)
-echo "Installing necessary packages"
-sudo apt-get install -y curl git
+# Install httpd (Apache)
+echo "Installing Apache (httpd)..."
+sudo yum install -y httpd
