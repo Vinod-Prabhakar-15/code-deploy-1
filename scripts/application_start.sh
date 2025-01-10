@@ -1,2 +1,6 @@
+# scripts/application_start.sh
 #!/bin/bash
-service httpd start
+
+# Start Apache server
+systemctl start apache2
+systemctl enable apache2
